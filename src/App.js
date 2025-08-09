@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Line from './Line.js';
+import { useEffect, useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App (){
+    const [solution, setSolution] = useState ('');
+
+    useEffect( () => {
+        const fetchWord = async () => {
+            const wordsList = await fetch ('/assets/5letter-words.json');
+            const words = await  wordsList.json();
+            setSolution(words);
+        }
+        fetchWord();
+    }, []);
+
+    return (
+        <Line />
+    ) 
 }
 
 export default App;
