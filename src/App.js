@@ -6,6 +6,7 @@ export const NO_OF_GUESSES = 6;
 export const WORD_LENGTH = 5;
 
 function App () {
+    const [wordList, setWordList] = useState ([]);
     const [solution, setSolution] = useState ('');
     const [guesses, setGuesses] = useState(new Array(NO_OF_GUESSES).fill(null));
     const [currentGuess, setCurrentGuess] = useState('');
@@ -17,9 +18,15 @@ function App () {
             const words = await  wordsList.json();
             const randomWord = await words[Math.floor(Math.random() * words.length)];
             setSolution(randomWord);
+            setWordList(words);
         }
         fetchWord();
     }, []);
+
+    useEffect( () => {
+        console.log("Solution :: " + solution);
+        console.log("WordsList :: " + wordList);
+    }, [solution]);
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -31,8 +38,8 @@ function App () {
             }
             else if (event.key === 'Backspace') setCurrentGuess((prev) => prev.slice(0, -1));
             else if (event.key === 'Enter') {
-                if (currentGuess.length !== WORD_LENGTH) return;
-                if (solution === currentGuess) setIsGameOver(true);
+                if (currentGuess.length !== WORD_LENGTH || !wordList.includes(currentGuess?.toLowerCase())) return;
+                else if (solution === currentGuess) setIsGameOver(true);
                 const newGuesses = [...guesses];
                 const firstEmptyIndex = newGuesses.findIndex((g) => g === null);
                 if (firstEmptyIndex !== -1) {
