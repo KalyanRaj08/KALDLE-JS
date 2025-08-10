@@ -1,12 +1,14 @@
 import './Line.css';
+import { WORD_LENGTH, NO_OF_GUESSES } from './App';
 
-const WORD_LENGTH = 5;
-
-function Line (){
+function Line ( {guess} ){
     const tiles = []
-    for (let i=0; i < WORD_LENGTH; i++)
-    {
-        tiles.push(<div key={i} className='tile'></div>)
+    for (let i=0; i < WORD_LENGTH; i++) {
+        tiles.push(
+            <div key={i} className='tile'>
+                {guess ? guess[i] || '' : ''}
+            </div>          
+        )
     }
     return (
         <div className='line'> {tiles} </div>
