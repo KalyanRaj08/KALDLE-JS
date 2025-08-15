@@ -7,7 +7,7 @@ const countOccurance = (word, searchLetter) => {
 };
 
 
-const Line = ( {guess, solution='', isFinal} ) => {
+const Line = ( {guess, solution='', isFinal, doShake, borderColor} ) => {
     const tiles = []
     for (let i=0; i < WORD_LENGTH; i++) {
         let color = 'white';
@@ -19,7 +19,7 @@ const Line = ( {guess, solution='', isFinal} ) => {
             else color = 'red';
         }
         tiles.push(
-            <div key={i} className='tile' style={{ '--tile-color': color }}>
+            <div key={i} className={`tile ${doShake ? 'shakeTileAnimation' : ''} ${color !== 'white' ? 'fillColorAnimation' : ''}`} style={{ '--tile-color': color, '--tile-border-color' : borderColor }}>
                 {guess ? guess[i] || '' : ''}
             </div>          
         )

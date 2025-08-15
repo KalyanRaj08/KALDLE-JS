@@ -2,7 +2,13 @@ body {
   background-color: #b1b1ac; 
   margin: 0;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100dvh;
+  position: relative;
+}
+
+.linesContainer {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }
