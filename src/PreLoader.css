@@ -1,0 +1,44 @@
+body {
+  background-color: #B8FFD5; 
+  margin: 0;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+}
+
+.kaldle-img {
+  max-width: 100%;
+  width: 27rem;
+  height: 9rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #112B17;
+  border-width: .2rem;
+  animation-name: move-up;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+@keyframes move-up {
+    0% { 
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    100% { 
+        width: 9rem;
+        height: 3rem;
+        border-style: hidden;
+        border-radius: .8rem;
+        top: 0%;
+        transform: translate(-50%, 0%);
+    }
+}

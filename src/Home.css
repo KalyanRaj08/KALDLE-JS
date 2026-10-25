@@ -1,0 +1,14 @@
+body {
+  background-color: #B8FFD5; 
+  margin: 0;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
+}
+
+.linesContainer {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}

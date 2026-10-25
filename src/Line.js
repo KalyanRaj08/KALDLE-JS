@@ -1,5 +1,5 @@
 import './Line.css';
-import { WORD_LENGTH } from './App';
+import { WORD_LENGTH } from './Home.js';
 
 const countOccurance = (word, searchLetter) => {
   if (!word || typeof word !== 'string') return 0;
